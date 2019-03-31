@@ -9,11 +9,9 @@ if (OPENMP_FOUND)
 endif ()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-add_subdirectory(ncnn)
+#add_subdirectory(ncnn)
 include_directories(
-        ${CMAKE_BINARY_DIR}/ncnn/src/
-        ${CMAKE_CURRENT_LIST_DIR}/ncnn/src/
-        ${CMAKE_CURRENT_LIST_DIR}/ncnn/src/layer
+        ${CMAKE_CURRENT_LIST_DIR}/ncnn/build/install/include/
         ${CMAKE_CURRENT_LIST_DIR}/src)
 
 file(GLOB MTCNN_SRC ${CMAKE_CURRENT_LIST_DIR}/src/*.h
@@ -26,4 +24,4 @@ add_definitions(-ffast-math)
 add_definitions(-ftree-vectorize)
 add_definitions(-fvisibility=hidden -fvisibility-inlines-hidden)
 add_executable(mtcnn ${MTCNN_COMPILE_CODE})
-target_link_libraries(mtcnn ${CMAKE_BINARY_DIR}/ncnn/src/libncnn.a m)
+target_link_libraries(mtcnn ${CMAKE_BINARY_DIR}/ncnn/build/install/lib/libncnn.a m)
