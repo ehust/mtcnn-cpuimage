@@ -1,4 +1,6 @@
 
+#include <time.h>
+#include <sys/time.h>
 
 #include "mtcnn.h"
 
@@ -197,7 +199,7 @@ void MTCNN::PNet() {
         nms(boundingBox, nms_threshold[0]);
 		for (Bbox box : boundingBox)
 		{
-			if (box.x2-box.x1 < 100)
+			if (box.x2-box.x1 < 150)
 			{
 				firstBbox.insert(firstBbox.end(), box);
 			}
@@ -232,6 +234,7 @@ void MTCNN::RNet() {
 }
 
 void MTCNN::ONet() {
+    int i = 0;
     thirdBbox.clear();
     for (auto &it : secondBbox) {
         ncnn::Mat tempIm;
@@ -240,21 +243,26 @@ void MTCNN::ONet() {
         resize_bilinear(tempIm, in, 48, 48);
         ncnn::Extractor ex = Onet.create_extractor();
         ex.set_light_mode(true);
+	//ex.set_num_threads(2);
         ex.input("data", in);
         ncnn::Mat score, bbox, keyPoint;
         ex.extract("prob1", score);
         ex.extract("conv6-2", bbox);
+#ifdef LANDMARK
         ex.extract("conv6-3", keyPoint);
+#endif
         if ((float) score[1] > threshold[2]) {
             for (int channel = 0; channel < 4; channel++) {
                 it.regreCoord[channel] = (float) bbox[channel];
             }
             it.area = (it.x2 - it.x1) * (it.y2 - it.y1);
             it.score = score.channel(1)[0];
+#ifdef LANDMARK
             for (int num = 0; num < 5; num++) {
                 (it.ppoint)[num] = it.x1 + (it.x2 - it.x1) * keyPoint[num];
                 (it.ppoint)[num + 5] = it.y1 + (it.y2 - it.y1) * keyPoint[num + 5];
             }
+#endif
             thirdBbox.push_back(it);
         }
     }
