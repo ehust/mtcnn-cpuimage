@@ -1,0 +1,3 @@
+/work/github.com/mtcnn-cpuimage/build/CMakeFiles/rebuild_cache.dir
+/work/github.com/mtcnn-cpuimage/build/CMakeFiles/mtcnn.dir
+/work/github.com/mtcnn-cpuimage/build/CMakeFiles/edit_cache.dir

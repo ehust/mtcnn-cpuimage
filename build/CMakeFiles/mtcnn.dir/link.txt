@@ -1,0 +1,1 @@
+/usr/bin/c++   -fopenmp -std=c++11 -O3 -DNDEBUG    -rdynamic CMakeFiles/mtcnn.dir/src/main.cpp.o CMakeFiles/mtcnn.dir/src/mtcnn.cpp.o  -o mtcnn install/lib/libncnn.a -lm 

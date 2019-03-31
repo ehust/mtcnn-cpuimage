@@ -1,0 +1,1 @@
+/opt/hisi-linux/x86-arm/arm-hisiv500-linux/target/bin/arm-hisiv500-linux-g++  -std=c++11 -march=armv7-a -mfloat-abi=softfp -mfpu=neon-vfpv4  -fopenmp -std=c++11 -O3 -DNDEBUG    -rdynamic CMakeFiles/mtcnn.dir/src/main.cpp.o CMakeFiles/mtcnn.dir/src/mtcnn.cpp.o  -o mtcnn install/lib/libncnn.a -lm 

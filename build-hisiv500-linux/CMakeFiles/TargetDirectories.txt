@@ -1,0 +1,3 @@
+/work/github.com/mtcnn-cpuimage/build-hisiv500-linux/CMakeFiles/rebuild_cache.dir
+/work/github.com/mtcnn-cpuimage/build-hisiv500-linux/CMakeFiles/mtcnn.dir
+/work/github.com/mtcnn-cpuimage/build-hisiv500-linux/CMakeFiles/edit_cache.dir
