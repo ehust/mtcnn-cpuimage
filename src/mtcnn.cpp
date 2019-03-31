@@ -195,7 +195,14 @@ void MTCNN::PNet() {
         std::vector<Bbox> boundingBox;
         generateBbox(score, location, boundingBox, scale);
         nms(boundingBox, nms_threshold[0]);
-        firstBbox.insert(firstBbox.end(), boundingBox.begin(), boundingBox.end());
+		for (Bbox box : boundingBox)
+		{
+			if (box.x2-box.x1 < 100)
+			{
+				firstBbox.insert(firstBbox.end(), box);
+			}
+		}
+        //firstBbox.insert(firstBbox.end(), boundingBox.begin(), boundingBox.end());
         boundingBox.clear();
     }
 }
