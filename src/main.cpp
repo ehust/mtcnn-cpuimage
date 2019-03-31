@@ -1,7 +1,7 @@
 #include "mtcnn.h"
 #include "browse.h"
 
-#define USE_SHELL_OPEN
+//#define USE_SHELL_OPEN
 #ifndef  nullptr
 #define nullptr 0
 #endif
@@ -484,7 +484,7 @@ int main(int argc, char **argv) {
         RemoveRedEyes(inputImage, inputImage, Width, Height, Channels, left_eye_x, left_eye_y, radius);
         RemoveRedEyes(inputImage, inputImage, Width, Height, Channels, right_eye_x, right_eye_y, radius);
     }
-    facialPoseCorrection(inputImage, Width, Height, Channels, left_eye_x, left_eye_y, right_eye_x, right_eye_y);
+    //facialPoseCorrection(inputImage, Width, Height, Channels, left_eye_x, left_eye_y, right_eye_x, right_eye_y);
     saveImage("_done.jpg", Width, Height, Channels, inputImage);
     free(inputImage);
     printf("press any key to exit. \n");
